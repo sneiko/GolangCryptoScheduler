@@ -1,0 +1,15 @@
+CREATE TABLE Symbols
+(
+    Id SERIAL PRIMARY KEY,
+    Symbol VARCHAR(20) UNIQUE,
+    Name VARCHAR(80) UNIQUE,
+    IsFiat BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE Exchange_Rates
+(
+    Id SERIAL PRIMARY KEY,
+    CurrencyId INT NOT NULL,
+    Value VARCHAR(40) NOT NULL,
+    OnCreateDateTime TIMESTAMP WITH TIME ZONE DEFAULT (current_timestamp AT TIME ZONE 'UTC')
+);

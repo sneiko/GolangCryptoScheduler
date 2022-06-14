@@ -1,0 +1,14 @@
+basePath: /
+host: localhost
+info:
+  contact:
+    email: s_neiko@outlook.com
+    name: Neykovich Sergey
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: CryptoTest API
+  version: "1.0"
+paths: {}
+swagger: "2.0"

@@ -1,0 +1,34 @@
+version: '3.9'
+services:
+  api:
+    container_name: api
+    tty: true
+    build: ./
+    command: ./wait-for-postgres.sh ./api
+    environment:
+      - DB_CONNECTION_STRING=postgresql://root:pwd@localhost:5432/crypto
+      - PORT=8080
+      - IS_PRODACTION=false
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresdb
+
+  postgresdb:
+    image: postgres:latest
+    container_name: db
+    restart: on-failure
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=pwd
+      - POSTGRES_DB=crypto
+    ports:
+      - '5432:5432' # todo: change to only container port
+    volumes:
+      - ./.database/postgres/data:/var/lib/postgresql/data
+#    networks:
+#      - api_network
+
+#networks:
+#  api_network:
+#    driver: bridge
